@@ -90,7 +90,7 @@ def upload_page():
         'Android Malware': 'maldroid2_model',
         'Windows Malware': 'pca2_model',
         'IoMT WiFi Malware': 'iomt2_model',
-        'Obfuscated Malware': 'obfuscated_model'
+        'Obfuscated Malware': 'obfuscated2_model'
     }
     selected_model_name = st.sidebar.selectbox("Select Model", list(model_options.keys()))
     uploaded_file = st.file_uploader("Upload your test CSV file", type=['csv'])
