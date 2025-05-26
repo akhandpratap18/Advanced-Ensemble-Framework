@@ -44,42 +44,42 @@ def animated_progress_gauge(solved, total, attempting, duration=1.5):
     steps = 30
     delay = duration / steps
     gauge_placeholder = st.empty()
+    
     for i in range(1, steps + 1):
         current_percent = percent * i / steps
-        fig = go.Figure(go.Indicator(
-            mode = "gauge+number",
-            value = current_percent,
-            number = {'suffix': "%", 'font': {'size': 36}},
-            gauge = {
-                'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkgray"},
-                'bar': {'color': "#2ecc71", 'thickness': 0.25},
-                'bgcolor': "white",
-                'borderwidth': 2,
-                'bordercolor': "gray",
-                'steps': [
-                    {'range': [0, 50], 'color': '#00bcd4'},
-                    {'range': [50, 80], 'color': '#ffc107'},
-                    {'range': [80, 100], 'color': '#e53935'}
-                ],
-                'threshold': {
-                    'line': {'color': "red", 'width': 4},
-                    'thickness': 0.75,
-                    'value': percent
-                }
-            },
-            domain = {'x': [0, 1], 'y': [0, 1]},
-            title = {'text': f"<b>{int(solved)}</b> / {int(total)}<br><span style='color:gray;font-size:0.8em'>Solved</span><br><span style='color:gray;font-size:0.8em'>{int(attempting)} Attempting</span>", 'font': {'size': 18}}
-        ))
-        fig.update_layout(
-            margin=dict(l=20, r=20, t=40, b=20),
-            height=300,
-            paper_bgcolor="rgba(0,0,0,0)",
-            font={'color': "white"}
-        )
-        gauge_placeholder.plotly_chart(fig, use_container_width=True)
-        time.sleep(delay)
-    # Show the final gauge (in case Streamlit skips the last frame)
-    gauge_placeholder.plotly_chart(fig, use_container_width=True)
+        with gauge_placeholder.container():
+            fig = go.Figure(go.Indicator(
+                mode="gauge+number",
+                value=current_percent,
+                number={'suffix': "%", 'font': {'size': 36}},
+                gauge={
+                    'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "darkgray"},
+                    'bar': {'color': "#2ecc71", 'thickness': 0.25},
+                    'bgcolor': "white",
+                    'borderwidth': 2,
+                    'bordercolor': "gray",
+                    'steps': [
+                        {'range': [0, 50], 'color': '#00bcd4'},
+                        {'range': [50, 80], 'color': '#ffc107'},
+                        {'range': [80, 100], 'color': '#e53935'}
+                    ],
+                    'threshold': {
+                        'line': {'color': "red", 'width': 4},
+                        'thickness': 0.75,
+                        'value': percent
+                    }
+                },
+                domain={'x': [0, 1], 'y': [0, 1]},
+                title={'text': f"<b>{int(solved)}</b> / {int(total)}<br><span style='color:gray;font-size:0.8em'>Solved</span><br><span style='color:gray;font-size:0.8em'>{int(attempting)} Attempting</span>", 'font': {'size': 18}}
+            ))
+            fig.update_layout(
+                margin=dict(l=20, r=20, t=40, b=20),
+                height=300,
+                paper_bgcolor="rgba(0,0,0,0)",
+                font={'color': "white"}
+            )
+            st.plotly_chart(fig, use_container_width=True)
+            time.sleep(delay)
 
 # --- Pages ---
 def upload_page():
@@ -92,11 +92,9 @@ def upload_page():
         'IoMT WiFi Malware': 'iomt2_model',
         'Obfuscated Malware': 'obfuscated_model'
     }
-    selected_model_name = st.sidebar.selectbox(
-        "Select Model",
-        list(model_options.keys())
-    )
+    selected_model_name = st.sidebar.selectbox("Select Model", list(model_options.keys()))
     uploaded_file = st.file_uploader("Upload your test CSV file", type=['csv'])
+    
     if uploaded_file is not None:
         try:
             df = pd.read_csv(uploaded_file)
@@ -139,14 +137,6 @@ def results_page():
     total = len(data['decoded_true'])
     attempting = total - solved
     animated_progress_gauge(solved, total, attempting)
-
-    # # Sample Predictions
-    # st.write("### Sample Predictions")
-    # sample_df = pd.DataFrame({
-    #     "True Label": data['decoded_true'][:20],
-    #     "Predicted Label": data['decoded_pred'][:20]
-    # })
-    # st.dataframe(sample_df)
 
     # Class Distribution
     st.write("### Class Distribution")
