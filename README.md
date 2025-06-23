@@ -15,13 +15,14 @@ An intelligent and extensible malware detection dashboard that leverages advance
 ---
 
 ## 📁 Folder Structure
-- WeightedModels/ # Trained .joblib models
-- FeaturedSelection/ # Notebook to showcase feature selection process for different datasets.
-- ModelDevelopment/ # Notebooks showcases how different ML techniques were used to develop the trained models.
+- WeightedModels/ <!--Trained .joblib models -->
+- FeaturedSelection/ Notebook to showcase the feature selection process for different datasets.
+- ModelDevelopment/ Notebooks showcases how different ML techniques were used to develop the trained models.
+- TestDatasets/ Sample CSVs for quick testing
 -  app.py # Main Streamlit dashboard app
 -  requirements.txt # Required Python libraries
 -  README.md # Project documentation
--  TestDatasets/ # Sample CSVs for quick testing
+
  
 
 ---
