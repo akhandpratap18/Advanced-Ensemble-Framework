@@ -88,10 +88,10 @@ def upload_page():
     st.write("Upload your test dataset to get predictions and analysis")
     st.sidebar.header("Model Selection")
     model_options = {
-        'Android Malware': 'maldroid2_model',
-        'Windows Malware': 'pca2_model',
-        'IoMT WiFi Malware': 'iomt2_model',
-        'Obfuscated Malware': 'obfuscated_model'
+        'Android Malware': 'WeightedModels/maldroid2_model',
+        'Windows Malware': 'WeightedModels/pca2_model',
+        'IoMT WiFi Malware': 'WeightedModels/iomt2_model',
+        'Obfuscated Malware': 'WeightedModels/obfuscated2_model'
     }
     selected_model_name = st.sidebar.selectbox(
         "Select Model",
