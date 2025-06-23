@@ -173,7 +173,7 @@ def results_page():
                 title='Class-wise Prediction Accuracy',
                 color='Accuracy',
                 color_continuous_scale='RdYlGn')
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, key="class_wise_accuracy_chart")
 
     # Detailed metrics
     st.write("### Detailed Metrics")
