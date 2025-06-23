@@ -6,20 +6,21 @@ An intelligent and extensible malware detection dashboard that leverages advance
 
 ## 🚀 Features
 
-- 📊 **Upload & Analyze**: Upload test CSVs for any malware family and get predictions using pretrained models.
-- 🧠 **Model Variety**: Supports Android, Windows, IoT WiFi, and Obfuscated malware detection.
-- 📈 **Interactive Dashboard**: Animated gauge, class-wise accuracy bar charts, confusion matrix, and detailed classification metrics.
-- 🔍 **Label Decoder**: Understand the encoded labels for clarity in predictions.
-- 📥 **Download Results**: Export predictions and correctness metrics in one click.
+- **Upload & Analyze**: Upload test CSVs for any malware family and get predictions using pretrained models.
+- **Model Variety**: Supports Android, Windows, IoT WiFi, and Obfuscated malware detection.
+- **Interactive Dashboard**: Animated gauge, class-wise accuracy bar charts, confusion matrix, and detailed classification metrics.
+- **Label Decoder**: Understand the encoded labels for clarity in predictions.
+- **Download Results**: Export predictions and correctness metrics in one click.
 
 ---
 
 ## 📁 Folder Structure
-├── WeightedModels/ # Trained .joblib models
-├── app.py # Main Streamlit dashboard app
-├── requirements.txt # Required Python libraries
-├── README.md # Project documentation
-└── TestDatasets/ # Sample CSVs for quick testing
+- WeightedModels/ # Trained .joblib models
+-  app.py # Main Streamlit dashboard app
+-  requirements.txt # Required Python libraries
+-  README.md # Project documentation
+-  TestDatasets/ # Sample CSVs for quick testing
+ 
 
 ---
 
