@@ -1,6 +1,6 @@
-streamlit
-pandas
-scikit-learn == 1.2.2
-joblib
-plotly
-imblearn
+streamlit==1.33.0
+pandas==1.5.3
+scikit-learn==1.2.2
+joblib==1.2.0
+plotly==5.15.0
+imbalanced-learn==0.10.1
